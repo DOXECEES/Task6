@@ -36,7 +36,7 @@ int main()
 	int zeroCounter = 0;
 	int howMuchZeroSkipped = 0;
 
-	for (int i = 0; i < arrayLength; i++)
+	for (int i = 0; i < arrayLength; i++)//Считаем количество нолей в массиве
 	{
 		if (array[i] == 0)
 		{
@@ -44,25 +44,27 @@ int main()
 		}
 	}
 
-	int* arrayWithoutZeros = new int[arrayLength - zeroCounter];
+	int* arrayWithoutZeros = new int[arrayLength - zeroCounter];//Создаем новый массив размером на zeroCounter меньше
 
 	for (int i = 0; i < arrayLength; i++)
 	{
 
-		if (array[i] == 0)
+		if (array[i] == 0)// Скипаем элементы с нолями и считаем сколько нолей скипнули
 		{
 			
 			howMuchZeroSkipped++;
 			continue;
 		}
-		arrayWithoutZeros[i - howMuchZeroSkipped] = array[i];
+		arrayWithoutZeros[i - howMuchZeroSkipped] = array[i]; 
 	}
-
+	delete[] array;
+	
 	for (int i = 0; i < (arrayLength - zeroCounter); i++)
 	{
 		std::cout << arrayWithoutZeros[i] << " ";
 	}
 	std::cout << std::endl;
 	std::cout << "-------------------------------------------" << std::endl;
-
+	
+	delete[] arrayWithoutZeros;
 }
